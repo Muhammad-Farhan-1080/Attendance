@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <style>
+        .containers {
+            border: 2px solid black;
+            width: 30%;
+            margin: auto;
+            background-color: #252525;
+            color: #fff;
+            text-align: center;
+
+
+        }
+
+        body {
+            background-color: #252525;
+        }
+
+        html {
+            height: 100%;
+        }
+
+        body {
+            margin: 0;
+        }
+
+        .bg {
+            animation: slide 3s ease-in-out infinite alternate;
+            background-image: linear-gradient(-60deg, #6c3 50%, #09f 50%);
+            bottom: 0;
+            left: -50%;
+            opacity: .5;
+            position: fixed;
+            right: -50%;
+            top: 0;
+            z-index: -1;
+        }
+
+        .bg2 {
+            animation-direction: alternate-reverse;
+            animation-duration: 4s;
+        }
+
+        .bg3 {
+            animation-duration: 5s;
+        }
+
+        .content {
+            background-color: rgba(255, 255, 255, .8);
+            border-radius: .25em;
+            box-shadow: 0 0 .25em rgba(0, 0, 0, .25);
+            box-sizing: border-box;
+            left: 50%;
+            padding: 10vmin;
+            position: fixed;
+            text-align: center;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        h1 {
+            font-family: monospace;
+        }
+
+        @keyframes slide {
+            0% {
+                transform: translateX(-25%);
+            }
+
+            100% {
+                transform: translateX(25%);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="bg"></div>
+    <div class="bg bg2"></div>
+    <div class="bg bg3"></div>
+
+
+
+
+    <div class="containers">
+
+        <h1>Details</h1>
+
+        <form action="">
+            <label for="">Name: </label>
+            <input type="text" id="name" style="width: 50%;"><br><br>
+            <label for="">Father Name: </label>
+            <input type="text" style="width: 50%;"><br><br>
+            <label for="">Roll Number: </label>
+            <input type="text" id="rollno" style="width: 50%;"><br><br>
+            <label for="">Contact Number: </label>
+            <input type="text" style="width: 50%;"><br><br>
+            <label for="">Cnic Number: </label>
+            <input type="text" style="width: 50%;"><br><br>
+            <label for="">Picture</label>
+            <input type="file"><br><br>
+            <label for="">Course Name:</label>
+            <input type="text" style="width: 50%;"><br><br>
+            <p>Class Assigned</p>
+            <input type="radio" id="html" value="Web & App">
+              <label for="">Web & App</label><br>
+              <input type="radio" id="css" value="Graphic Design">
+              <label for="">Graphic Design</label><br>
+              <input type="radio" id="javascript" value="CCO">
+              <label for="">CCO</label><br>
+            <input type="radio" id="" value="CIT">
+              <label for="">CIT</label><BR></BR>
+            <button type="button" class="btn btn-primary" id="btn">Submit</button><br>
+
+        </form>
+
+
+
+
+        <div class="main">
+            <br><br><input type="text" id="input">
+            <button onclick="addItem()">Add</button>
+            <button style="display: none;" onclick="updateItems()">Update</button>
+
+            <ul id="list">
+
+            </ul>
+        </div><br>
+
+        <div class="row my-custom-row justify-content-center ">
+            <div class="col-md ">
+
+
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Attendance
+                </button>
+
+
+
+            </div>
+
+
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel" style="color: black;">Enter Student Id</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <label for="" style="color: black;">Student Id#</label><input type="text">
+                            <select name="" id="">
+                                <option value="Present" id="pre">Present</option>
+                                <option value="Late" id="lat">Late</option>
+                                <option value="Absent" id="abs">Absent</option>
+                                <option value="Leave" id="lea">Leave</option>
+                            </select>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary" id="mark">Mark</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <script>
+            var editElement
+            function addItem() {
+                var input = document.getElementById("input")
+                var list = document.getElementById("list")
+                var items = document.createElement("li")
+                var del = document.createElement("button")
+                del.innerHTML = "Delete"
+                del.setAttribute('onclick', 'deleteItem(event)')
+                var edit = document.createElement("button")
+                edit.innerHTML = "Edit"
+                edit.setAttribute('onclick', 'editItems(event)')
+                items.innerHTML = input.value
+                list.appendChild(items)
+                items.appendChild(del)
+                items.appendChild(edit)
+
+                input.value = " "
+            }
+
+
+            function deleteItem(event) {
+                var li = event.target.parentElement
+                var ul = li.parentElement
+                ul.removeChild(li)
+            }
+
+
+            function editItems(event) {
+
+
+                // getting text in input 
+                var li = event.target.parentElement
+                var value = li.childNodes[0].nodeValue
+                var input = document.getElementById("input")
+                input.value = value
+
+
+
+                // changing button add to update when edit is clicked
+                var btns = document.getElementsByTagName("button")
+                var addBtn = btns[0]
+                addBtn.style.display = "none"
+                var updBtn = btns[1]
+                updBtn.style.display = "inline"
+
+                li.style.backgroundColor = "yellow"
+                editElement = li
+
+            }
+
+
+            function updateItems() {
+
+                var input = document.getElementById("input")
+                editElement.childNodes[0].nodeValue = input.value
+                input.value = " "
+
+                var btns = document.getElementsByTagName("button")
+                var addBtn = btns[0]
+                addBtn.style.display = "inline"
+                var updBtn = btns[1]
+                updBtn.style.display = "none"
+
+                editElement.style.backgroundColor = "white"
+
+
+            }
+
+            let mark_btn = document.getElementById('mark')
+            mark_btn.addEventListener('click', function () {
+                let present = document.getElementById('pre').value
+                let absent = document.getElementById('abs').value
+                let leave = document.getElementById('lea').value
+                let late = document.getElementById('lat').value
+
+                if (present == 'Present') {
+
+                    alert(' Present Marked!')
+
+                } else if (leave == 'Leave' || absent == 'Absent') {
+                    alert('Confirm Please')
+                    window.location.href = 'index.html'
+
+                }
+
+
+
+            })
+
+
+
+      
+
+
+
+
+
+
+        </script>
+
+        
+
+
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+            integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+            crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js"
+            integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk"
+            crossorigin="anonymous"></script>
+
+</body>
+
+</html>

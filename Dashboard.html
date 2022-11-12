@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+    <style>
+
+        body{
+            background-color: rgb(99, 174, 248);
+        }
+
+        label{
+            color: black;
+        }
+        span{
+            color: black;
+        }
+        h3{
+            color: black;
+        }
+        .container1{
+            height: 80px;
+            width: 100%;
+            position: fixed;
+            background-color: #006ee7;
+            color: #fff;
+            
+        }
+
+     
+         .form{
+
+       
+        width: 25%;
+        margin: auto;
+        background-color: #fff;
+       
+        }
+        .show{
+
+       
+        height: 200px;
+        width: 30%;
+        float: right;
+        background-color: #fff;
+        
+
+        } 
+
+        .log{
+          
+            color: black;
+            text-decoration: none;
+        }
+
+        a{
+            text-decoration: none;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="container1">
+        <h3>Student Attendance Management System</h3>
+        <a href="addDetail.html" style="color: black;">Details of Student</a>
+        <a href="index.html" style="color: black ; float: right;">Logout</a>
+     
+       
+
+            <div class="side"></div><br><br>
+            <div class="form">
+                <form action="">
+                    <h3 style="color: black;">Class Form</h3><br><br>
+                    <label style="color: black;">Choose Class:</label>
+                
+                    <select name="course" id="course">
+                        <option value="Web & App" >Web & App</option>
+                        <option value="Graphic Design">Graphic Design</option>
+                        <option value="CCO">CCO</option>
+                        <option value="CIT">CIT</option>
+                    </select><br><br>
+                    <label for="" style="color: black;" >Batch:</label>
+                    <input type="text" id="batch"><br><br>
+                    <label for="">Class Timing</label>
+                    <input type="text" id="time"><br><br>
+                    <label for="">Teacher's Name:</label>
+                    <input type="text" id="tname"><br><br>
+                    <label for="">Section Name</label>
+                    <input type="text" id=""><br><br>
+
+                    <button type="button" class="btn btn-primary" id="save_btn">Save</button>
+                    <button type="button" class="btn btn-light">Cancel</button>
+                </form>
+            </div><br><br>
+            <div class="show">
+                <h3 style="color: black;">Class List</h3>
+                <hr style="color: black;">
+                <label for="" >Course :</label><span id="course_name"></span><br>
+                <label for="">Batch :</label><span id="batch_num"></span><br><br>
+                <!-- <label for="" >Class Timing :</label><span id="course_name"></span><br>
+                <label for="">Teachers Name :</label><span id="batch_num"></span><br><br>
+                <label for="" >Section Name :</label><span id="course_name"></span><br>
+                <label for="">Batch :</label><span id="batch_num"></span><br><br> -->
+                <button type="button" class="btn btn-primary" >Edit</button>
+                <button type="button" class="btn btn-danger" >Delete</button>
+
+            </div>
+    </div>
+    
+  
+    
+    <script>
+
+        let save_btn = document.getElementById('save_btn')
+        save_btn.addEventListener('click',function(){
+            let course = document.getElementById('course').value
+            let batch = document.getElementById('batch').value
+
+            let course_name = document.getElementById('course_name');
+            let batch_num = document.getElementById('batch_num')
+            course_name.innerHTML = course
+            batch_num.innerHTML = batch
+
+
+
+        })
+
+    </script>
+</body>
+</html>
